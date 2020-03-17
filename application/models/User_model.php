@@ -2,7 +2,7 @@
 
 class User_model extends CI_Model
 {
-    private $_table = "users";
+    private $_table = "users"; //memanggil database pada tabel users
 
     public $user_id;
     public $full_name;
@@ -27,17 +27,17 @@ class User_model extends CI_Model
         ];
     }
 
-    public function getAll()
+    public function getAll() //menampilkan semua data
     {
         return $this->db->get($this->_table)->result();
     }
     
-    public function getById($id)
+    public function getById($id) //menampilkan data berdasarkan id
     {
         return $this->db->get_where($this->_table, ["user_id" => $id])->row();
     }
 
-    public function save()
+    public function save() //fungsi simpan  
     {
         $post = $this->input->post();
         $this->full_name = $post["full_name"];
@@ -49,7 +49,7 @@ class User_model extends CI_Model
         $this->db->insert($this->_table, $this);
     }
 
-    public function update()
+    public function update() //fungsi mengubah data
     {
         $post = $this->input->post();
         $this->full_name = $post["full_name"];
@@ -59,7 +59,7 @@ class User_model extends CI_Model
         $this->db->update($this->_table, $this, array('user_id' => $post['id']));
     }
 
-    public function doLogin(){
+    public function doLogin(){ //fungsi login
 		$post = $this->input->post();
 
         $this->db->where('email', $post["email"])

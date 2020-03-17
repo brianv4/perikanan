@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Products extends CI_Controller
 {
-    public function __construct()
+    public function __construct() //untuk memanggil kelas model atau library yang akan kita gunakan pada setiap function.
     {
         parent::__construct();
         $this->load->model("product_model");
@@ -13,13 +13,13 @@ class Products extends CI_Controller
 		if($this->user_model->isNotLogin()) redirect(site_url('admin/login'));
     }
 
-    public function index()
+    public function index() //fungsi index
     {
         $data["products"] = $this->product_model->getAll();
         $this->load->view("admin/product/list", $data);
     }
 
-    public function add()
+    public function add()   //fungsi tambah data
     {
         $product = $this->product_model;
         $validation = $this->form_validation;
@@ -33,7 +33,7 @@ class Products extends CI_Controller
         $this->load->view("admin/product/new_form");
     }
 
-    public function edit($id = null)
+    public function edit($id = null) //fungsi mengubah data (update)
     {
         if (!isset($id)) redirect('admin/products');
        
@@ -52,7 +52,7 @@ class Products extends CI_Controller
         $this->load->view("admin/product/edit_form", $data);
     }
 
-    public function delete($id=null)
+    public function delete($id=null) //fungsi menghapus data
     {
         if (!isset($id)) show_404();
         

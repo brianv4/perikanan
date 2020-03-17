@@ -27,10 +27,7 @@
 				<p><?=$product->description?></p>
 				<p>Rp. <?=$product->price?></p>
 				<p>
-					<?=anchor('welcome/add_to_cart/' . $product->product_id, 'Buy' , [
-						'class'	=> 'btn btn-primary',
-						'role'	=> 'button'
-					])?>
+			
 				</p>
 			  </div>
 			</div>

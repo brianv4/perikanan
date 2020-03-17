@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Product_model extends CI_Model
+class Product_model extends CI_Model 
 {
     private $_table = "products";
 
@@ -10,7 +10,7 @@ class Product_model extends CI_Model
     public $image = "default.jpg";
     public $description;
 
-    public function rules()
+    public function rules() 
     {
         return [
             ['field' => 'name',
@@ -27,17 +27,17 @@ class Product_model extends CI_Model
         ];
     }
 
-    public function getAll()
+    public function getAll() // fungsi untuk menampilkan semua data
     {
         return $this->db->get($this->_table)->result();
     }
     
-    public function getById($id)
+    public function getById($id) //fungsi untuk  menampilkan data berdasarkan id
     {
         return $this->db->get_where($this->_table, ["product_id" => $id])->row();
     }
 
-    public function save()
+    public function save() //fungsi simpan
     {
         $post = $this->input->post();
         $this->product_id = uniqid();
@@ -48,7 +48,7 @@ class Product_model extends CI_Model
         $this->db->insert($this->_table, $this);
     }
 
-    public function update()
+    public function update() //fungsi mengubah data 
     {
         $post = $this->input->post();
         $this->product_id = $post["id"];
@@ -66,13 +66,13 @@ class Product_model extends CI_Model
         $this->db->update($this->_table, $this, array('product_id' => $post['id']));
     }
 
-    public function delete($id)
+    public function delete($id) //fungsi menghapus data
     {
 		$this->_deleteImage($id);
         return $this->db->delete($this->_table, array("product_id" => $id));
 	}
 	
-	private function _uploadImage()
+	private function _uploadImage() //fungsi memasukan gambar 
 	{
 		$config['upload_path']          = './upload/product/';
 		$config['allowed_types']        = 'gif|jpg|png';
@@ -91,7 +91,7 @@ class Product_model extends CI_Model
 		return "default.jpg";
 	}
 
-	private function _deleteImage($id)
+	private function _deleteImage($id) //fungsi menghapus gambar pada data
 	{
 		$product = $this->getById($id);
 		if ($product->image != "default.jpg") {

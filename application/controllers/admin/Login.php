@@ -2,7 +2,7 @@
 
 class Login extends CI_Controller
 {
-    public function __construct()
+    public function __construct() //untuk memanggil kelas model atau library yang akan kita gunakan pada setiap function.
     {
         parent::__construct();
         $this->load->model("user_model");
@@ -10,15 +10,15 @@ class Login extends CI_Controller
         // $this->output->enable_profiler(TRUE);
     }
 
-    public function index()
+    public function index() //memnaggil kelas index 
     {
-        if ($this->input->post()) {
-            if ($this->user_model->doLogin()) redirect(site_url('admin'));
+        if ($this->input->post()) { //menambahkan data 
+            if ($this->user_model->doLogin()) redirect(site_url('admin')); //menuju ke halaman admin
         }
-        $this->load->view("admin/login_page.php");
+        $this->load->view("admin/login_page.php");  //menuju ke halaman login page pada directori admin
     }
 
-    public function logout()
+    public function logout()    //fungsi logout yang akan kembali pada halaman c_index
     {
         $this->session->sess_destroy();
         redirect(site_url('c_index'));
