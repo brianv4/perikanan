@@ -8,6 +8,7 @@ Sistem Informasi perikanan - Tugas Workshop Web Framework dengan Codeigniter
 4. Untuk menuju ke dashboard admin kita melakukan login terlebih dahulu
 
 ![Login](https://scontent.fdps5-1.fna.fbcdn.net/v/t1.0-9/89911580_2817578344997003_5940496415309430784_n.jpg?_nc_cat=102&_nc_sid=8024bb&_nc_ohc=A_NHlzyCf7UAX9Arya9&_nc_ht=scontent.fdps5-1.fna&oh=46eb2bd88d0a61694a2faff9409792c3&oe=5E976DC2)
+
 5. masukan :
 ```
 username: brian
